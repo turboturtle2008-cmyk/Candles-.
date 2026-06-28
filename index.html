@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candles Hand Made Furniture | Elite Multi-Page Corporate Portal</title>
+    <!-- Simple, luxury fonts and clean icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --------------------------------------------------
+           1. CORE DESIGN THEME VARIABLES
+        -------------------------------------------------- */
+        :root {
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --dark-bg: #0a0a0a;
+            --panel-bg: #141414;
+            --panel-card: #1c1c1c;
+            --text-light: #ffffff;
+            --text-gray: #aaaaaa;
+            --border-color: #222222;
+        }
+
+        /* --------------------------------------------------
+           2. BASIC RESET & SCROLLBAR ARCHITECTURE
+        -------------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #252525;
+            border-radius: 5px;
+            border: 2px solid var(--dark-bg);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+
+        /* --------------------------------------------------
+           3. PREMIUM TOP STICKY NAVIGATION BAR
+        -------------------------------------------------- */
+        nav {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-logo-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .nav-logo-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            object-fit: cover;
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 8px 4px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links button:hover,
+        .nav-links button.active-page {
+            color: var(--gold);
+        }
+
+        .nav-links button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links button:hover::after,
+        .nav-links button.active-page::after {
+            width: 100%;
+        }
+
+        /* --------------------------------------------------
+           4. SYSTEM WORKSPACE PAGE ROUTER (SPA HIDER)
+        -------------------------------------------------- */
+        .page-view {
+            display: none;
+            animation: fadeInPage 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .page-view.active-view {
+            display: block;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --------------------------------------------------
+           5. GLOBAL REUSABLE CONTAINERS & HEADER ELEMENTS
+        -------------------------------------------------- */
+        .main-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-header div {
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* --------------------------------------------------
+           6. PAGE 1: HERO HOME VIEW LAYOUT
+        -------------------------------------------------- */
+        .hero-banner {
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.98));
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-avatar {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            padding: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px var(--gold-glow);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.04) rotate(2deg);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero-banner h1 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-action-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-pro-primary {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 14px 40px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .btn-pro-primary:hover {
+            background: var(--gold);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-pro-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-light);
+            border: 1px solid #333;
+            padding: 14px 40px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .btn-pro-secondary:hover {
+            background: #222;
+            border-color: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Home Highlights Grid */
+        .home-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .highlight-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .highlight-card i {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .highlight-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .highlight-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* --------------------------------------------------
+           7. PAGE 2: WHO WE ARE (ABOUT VIEW ARCHITECTURE)
+        -------------------------------------------------- */
+        .about-main-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .about-paragraph {
+            font-size: 17px;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mission-callout-panel {
+            background: rgba(212, 175, 55, 0.02);
+            border-left: 4px solid var(--gold);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .mission-callout-panel h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 22px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .mission-callout-panel p {
+            font-size: 16px;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .why-us-title {
+            text-align: center;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .pro-features-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .pro-feature-node {
+            background: var(--panel-card);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #252525;
+            transition: all 0.3s ease;
+        }
+
+        .pro-feature-node:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .pro-feature-node i {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .pro-feature-node p {
+            font-size: 15px;
+            color: var(--text-light);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* --------------------------------------------------
+           8. PAGE 3: PRODUCTION STREAMS (SERVICES)
+        -------------------------------------------------- */
+        .services-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .service-wide-row {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-wide-row:hover {
+            border-color: var(--gold);
+            transform: scale(1.01);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .service-badge-num {
+            background: var(--panel-card);
+            border: 1px solid #333;
+            height: 100%;
+            min-height: 200px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .service-badge-num span {
+            font-size: 64px;
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .service-badge-num label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+
+        .service-details-box h3 {
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .service-details-box ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .service-details-box ul li {
+            font-size: 15px;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+
+        .service-details-box ul li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* --------------------------------------------------
+           9. PAGE 4: GALLERY ARCHIVE INTERFACE (FULL MATRIX ONLY)
+        -------------------------------------------------- */
+        .showroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .showroom-card {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: #000;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease;
+        }
+
+        .showroom-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .showroom-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .showroom-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Interactive Lightbox Popup System */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-frame {
+            max-width: 900px;
+            max-height: 85vh;
+            position: relative;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            animation: modalZoom 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes modalZoom {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-frame img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-close-trigger {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 32px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close-trigger:hover {
+            color: var(--gold);
+        }
+
+        /* --------------------------------------------------
+           10. PAGE 5: CORPORATE FAQS ARCHIVE
+        -------------------------------------------------- */
+        .faq-accordion-chassis {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-accordion-item {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 25px 30px;
+            text-align: left;
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-accordion-item:hover .faq-question-trigger {
+            background: rgba(255,255,255,0.01);
+        }
+
+        .faq-question-trigger span {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            margin-right: 15px;
+        }
+
+        .faq-question-trigger i {
+            font-size: 14px;
+            color: var(--text-gray);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            background: rgba(0,0,0,0.1);
+        }
+
+        .faq-answer-panel div {
+            padding: 0 30px 25px 30px;
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.7;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 20px;
+        }
+
+        .faq-accordion-item.faq-active .faq-answer-panel {
+            max-height: 200px;
+        }
+
+        .faq-accordion-item.faq-active .faq-question-trigger i {
+            transform: rotate(180deg);
+            color: var(--gold);
+        }
+
+        /* --------------------------------------------------
+           11. PAGE 6: CONTACT DESK & OFFICE INFO
+        -------------------------------------------------- */
+        .contact-layout-split {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            background: var(--panel-bg);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .contact-comms-deck {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .comms-node-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--panel-card);
+            padding: 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-light);
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .comms-node-card:hover {
+            border-color: var(--gold);
+            background: #202020;
+            transform: translateX(6px);
+        }
+
+        .comms-node-card i {
+            font-size: 32px;
+            color: var(--gold);
+            width: 45px;
+            text-align: center;
+        }
+
+        .comms-node-card div h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .comms-node-card div span {
+            font-size: 16px;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .showroom-address-card {
+            background: var(--panel-card);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 10px;
+        }
+
+        .showroom-address-card h4 {
+            color: var(--gold);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .showroom-address-card p {
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .business-card-showcase {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid #222;
+            padding-left: 40px;
+        }
+
+        .business-card-showcase h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .business-card-showcase p {
+            font-size: 13px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .corporate-card-graphic {
+            max-width: 100%;
+            width: 460px;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            transition: transform 0.4s ease;
+        }
+
+        .corporate-card-graphic:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        /* --------------------------------------------------
+           12. GLOBAL STRUCTURAL SITE FOOTER BAR
+        -------------------------------------------------- */
+        footer {
+            background-color: #050505;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: #666666;
+            font-size: 14px;
+            letter-spacing: 1.2px;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        /* --------------------------------------------------
+           13. HIGHLY RESPONSIVE MEDIA QUERIES
+        -------------------------------------------------- */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .contact-layout-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .business-card-showcase {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid #222;
+                padding-top: 40px;
+            }
+            .service-wide-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .service-badge-num {
+                min-height: auto;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .nav-links button {
+                font-size: 11px;
+                padding: 5px;
+            }
+            .hero-banner h1 {
+                font-size: 36px;
+            }
+            .hero-banner p {
+                font-size: 15px;
+            }
+            .about-main-box {
+                padding: 25px;
+            }
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================================================
+         A. STICKY TOP NAVIGATION ARCHITECTURE
+    ==================================================== -->
+    <nav>
+        <div class="nav-logo-block" onclick="navigateVirtualPage('homePage')">
+            <img class="nav-logo-circle" src="C:\Users\DELL\Downloads\IMG-20251117-WA0022.jpg" alt="Logo">
+            <div class="nav-logo-text">CANDLES</div>
+        </div>
+        <div class="nav-links">
+            <button id="nav-homePage" class="active-page" onclick="navigateVirtualPage('homePage')">Home</button>
+            <button id="nav-aboutPage" onclick="navigateVirtualPage('aboutPage')">Who We Are</button>
+            <button id="nav-servicesPage" onclick="navigateVirtualPage('servicesPage')">Services</button>
+            <button id="nav-galleryPage" onclick="navigateVirtualPage('galleryPage')">Gallery Matrix</button>
+            <button id="nav-faqPage" onclick="navigateVirtualPage('faqPage')">FAQs</button>
+            <button id="nav-contactPage" onclick="navigateVirtualPage('contactPage')">Contact Desk</button>
+        </div>
+    </nav>
+
+    <!-- ===================================================
+         B. INTERACTIVE INTERIOR PAGE VIEWROUTER SLOTS
+    ==================================================== -->
+    <main>
+
+        <!-- PAGE 1: HOME PLATFORM SECTION CONTAINER -->
+        <div id="homePage" class="page-view active-view">
+            <div class="hero-banner">
+                <img class="hero-avatar" src="C:\Users\DELL\Downloads\IMG-20251117-WA0022.jpg" alt="Candles Brand Graphic">
+                <h1>Candles <span>Hand Made Furniture</span></h1>
+                <p>High-quality classic and vintage masterpieces. Sourced from choice natural logs, finished with authentic hand-washed lacquer coatings for elite luxury residential setups.</p>
+                <div class="hero-action-row">
+                    <button class="btn-pro-primary" onclick="navigateVirtualPage('galleryPage')">Explore Matrix</button>
+                    <button class="btn-pro-secondary" onclick="navigateVirtualPage('contactPage')">Connect Desk</button>
+                </div>
+            </div>
+            
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Core Directives</p>
+                    <h2>Corporate Operations Pillars</h2>
+                    <div></div>
+                </div>
+                <div class="home-highlights">
+                    <div class="highlight-card" onclick="navigateVirtualPage('aboutPage')">
+                        <i class="fas fa-hammer"></i>
+                        <h3>Egyptian Craftsmanship</h3>
+                        <p>Preserving old production techniques passed down through generations of local artisans.</p>
+                    </div>
+                    <div class="highlight-card" onclick="navigateVirtualPage('servicesPage')">
+                        <i class="fas fa-couch"></i>
+                        <h3>French Aesthetics</h3>
+                        <p>Beautiful curves and ornate structures inspired directly by timeless classic European artwork.</p>
+                    </div>
+                    <div class="highlight-card" onclick="navigateVirtualPage('galleryPage')">
+                        <i class="fas fa-tree"></i>
+                        <h3>100% Solid Timber</h3>
+                        <p>We only build using choice timber matrices to guarantee lifelong structural durability panels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: CORPORATE HISTORY / IDENTITY PANEL SLOT -->
+        <div id="aboutPage" class="page-view">
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Identity Overview</p>
+                    <h2>Who We Are ?</h2>
+                    <div></div>
+                </div>
+                <div class="about-main-box">
+                    <p class="about-paragraph">
+                        The Egyptian French Furniture Company specializes in handcrafted classic and vintage furniture made from premium natural wood. We combine fine craftsmanship, timeless designs, and high-quality finishes to deliver furniture built to last.
+                    </p>
+                    
+                    <div class="mission-callout-panel">
+                        <h4>Our Mission Framework</h4>
+                        <p>"To create luxurious handcrafted furniture that reflects refined taste and preserves the essence of traditional Egyptian craftsmanship, inspired by French artistic elegance."</p>
+                    </div>
+
+                    <h3 class="why-us-title">Why Choose Us?</h3>
+                    <div class="pro-features-matrix">
+                        <div class="pro-feature-node">
+                            <i class="fas fa-history"></i>
+                            <p>Long experience in handcrafted furniture.</p>
+                        </div>
+                        <div class="pro-feature-node">
+                            <i class="fas fa-check-double"></i>
+                            <p>Premium materials and meticulous finishing.</p>
+                        </div>
+                        <div class="pro-feature-node">
+                            <i class="fas fa-crown"></i>
+                            <p>Elegant designs combining authenticity and luxury.</p>
+                        </div>
+                        <div class="pro-feature-node">
+                            <i class="fas fa-palette"></i>
+                            <p>Custom manufacturing tailored to every project.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: MANUFACTURING OPERATION BLUEPRINTS VIEW -->
+        <div id="servicesPage" class="page-view">
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Capabilities Manifest</p>
+                    <h2>Our Services</h2>
+                    <div></div>
+                </div>
+                
+                <div class="services-stack">
+                    <!-- Service Stream Block 1 -->
+                    <div class="service-wide-row">
+                        <div class="service-badge-num">
+                            <span>01</span>
+                            <label>Furniture Stream</label>
+                        </div>
+                        <div class="service-details-box">
+                            <h3>Classic & Vintage Furniture Manufacturing</h3>
+                            <ul>
+                                <li>Elegant designs with intricate details.</li>
+                                <li>Premium natural wood base structure.</li>
+                                <li>Hand-washed lacquer finishes for authenticity.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Stream Block 2 -->
+                    <div class="service-wide-row">
+                        <div class="service-badge-num">
+                            <span>02</span>
+                            <label>Structural Entry</label>
+                        </div>
+                        <div class="service-details-box">
+                            <h3>Wooden Doors Manufacturing</h3>
+                            <ul>
+                                <li>High-quality natural wood configuration logs.</li>
+                                <li>Classic and modern layout profiles.</li>
+                                <li>Superior finishing protection layer and durability.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Stream Block 3 -->
+                    <div class="service-wide-row">
+                        <div class="service-badge-num">
+                            <span>03</span>
+                            <label>Panel Engineering</label>
+                        </div>
+                        <div class="service-details-box">
+                            <h3>Wall Cladding Array</h3>
+                            <ul>
+                                <li>Luxurious wooden wall panels suitable for villas, premium offices, and interior installations.</li>
+                                <li>Precision workshop craftsmanship and flawless deployment on site.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Stream Block 4 -->
+                    <div class="service-wide-row">
+                        <div class="service-badge-num">
+                            <span>04</span>
+                            <label>Culinary Storage</label>
+                        </div>
+                        <div class="service-details-box">
+                            <h3>Premium Kitchen Frameworks</h3>
+                            <ul>
+                                <li>Natural solid wood logs combined with premium choice veneer surfaces.</li>
+                                <li>Modern functional designs engineered for maximum optimization.</li>
+                                <li>High-end surface protection finishes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Stream Block 5 -->
+                    <div class="service-wide-row">
+                        <div class="service-badge-num">
+                            <span>05</span>
+                            <label>Executive Setup</label>
+                        </div>
+                        <div class="service-details-box">
+                            <h3>Office Furniture Systems</h3>
+                            <ul>
+                                <li>Executive managerial primary desks.</li>
+                                <li>Staff modern functional workstations.</li>
+                                <li>Heavy load storage units and custom display shelving.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: PHOTO ARCHIVE / SHOWROOM DISPLAY VIEW (FULL MATRIX GRID) -->
+        <div id="galleryPage" class="page-view">
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Visual Catalog</p>
+                    <h2>Full Matrix Gallery</h2>
+                    <div></div>
+                </div>
+
+                <div class="showroom-grid">
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0072.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0134 (1).jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0134.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0078.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\Screenshot_20251121_192531_Drive.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\Screenshot_20251121_192525_Drive.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\Screenshot_20251121_192812_Drive.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251121-WA0063 (1).jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0074.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0026.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0028.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251121-WA0057.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251121-WA0034.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251121-WA0070.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251121-WA0036.jpg" alt="Masterwork Asset"></div>
+                    <div class="showroom-card" onclick="activateLightboxView(this)"><img src="C:\Users\DELL\Downloads\IMG-20251117-WA0116.jpg" alt="Masterwork Asset"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: RESOLVED CORPORATE QUESTIONS (FAQ ARCHIVE) -->
+        <div id="faqPage" class="page-view">
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Information Desk</p>
+                    <h2>Frequently Asked Questions</h2>
+                    <div></div>
+                </div>
+                <div class="faq-accordion-chassis">
+                    
+                    <div class="faq-accordion-item" onclick="toggleAccordionElement(this)">
+                        <button class="faq-question-trigger">
+                            <span>Q1.</span> What types of wood do you prioritize in production?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer-panel">
+                            <div>We source premium natural wood logs to create all core components, ensuring optimal structural stability, lifespan, and resistance to environmental shifts.</div>
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion-item" onclick="toggleAccordionElement(this)">
+                        <button class="faq-question-trigger">
+                            <span>Q2.</span> Do you accept custom dimensional design parameters?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer-panel">
+                            <div>Yes. We provide complete custom manufacturing solutions tailored specifically to fit your precise room layouts, villa drawings, or corporate blueprints.</div>
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion-item" onclick="toggleAccordionElement(this)">
+                        <button class="faq-question-trigger">
+                            <span>Q3.</span> What makes your lacquer finishes different?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer-panel">
+                            <div>We use traditional, meticulous multi-layer hand-washed lacquer finish systems. This brings out the deep natural texture of the wood grain while establishing high luxury durability.</div>
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion-item" onclick="toggleAccordionElement(this)">
+                        <button class="faq-question-trigger">
+                            <span>Q4.</span> Can you execute full villa interior carpentry packages?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer-panel">
+                            <div>Absolutely. Our workshops handle premium classic furniture, complete wall cladding runs, kitchen carpentry, and custom heavy-duty internal wooden doors under single master plan tracking.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 6: OFFICE CHANNELS & PHONE LINK REGISTRY -->
+        <div id="contactPage" class="page-view">
+            <div class="main-wrapper">
+                <div class="section-header">
+                    <p>Secure Interface Pipeline</p>
+                    <h2>Establish Communications</h2>
+                    <div></div>
+                </div>
+                <div class="contact-layout-split">
+                    
+                    <div class="contact-comms-deck">
+                        <a href="mailto:hassanmohamed821@hotmail.com" class="comms-node-card">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <div>
+                                <h4>Mailing Gateway</h4>
+                                <span>hassanmohamed821@hotmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:01229952534" class="comms-node-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Voice Line Desk (Phone)</h4>
+                                <span>01229952534</span>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/201001475926" target="_blank" class="comms-node-card">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                            <div>
+                                <h4>Direct WhatsApp Trunk</h4>
+                                <span>01001475926</span>
+                            </div>
+                        </a>
+
+                        <div class="showroom-address-card">
+                            <h4>Design Showroom Coordinates</h4>
+                            <p>The Egyptian French Furniture Company<br>46 St. 77G El Maadi El Golf, Cairo, Egypt<br>Behind Dina Farms, El Nady St.</p>
+                        </div>
+                    </div>
+
+                    <div class="business-card-showcase">
+                        <h3>Official Corporate Card</h3>
+                        <p>Business Reference Identity</p>
+                        <img class="corporate-card-graphic" src="C:\Users\DELL\Downloads\IMG-20251108-WA0002.jpg" alt="Official Business Card Reference Graphic">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===================================================
+         C. HIGH-SPEC INTERACTIVE MODAL WINDOW POPUP (LIGHTBOX)
+    ==================================================== -->
+    <div id="lightboxModal" class="lightbox-overlay" onclick="dismissLightboxView()">
+        <div class="lightbox-frame" onclick="event.stopPropagation()">
+            <button class="lightbox-close-trigger" onclick="dismissLightboxView()">&times;</button>
+            <img id="lightboxTargetImg" src="" alt="Target Inspector Asset View">
+        </div>
+    </div>
+
+    <!-- ===================================================
+         D. COMPREHENSIVE SITE FOOTER LAYOUT
+    ==================================================== -->
+    <footer>
+        <p>&copy; 2026 <span>Candles Hand Made Furniture</span> | The Egyptian French Furniture Company. Built for elite presentation profiles. All architectural rights reserved.</p>
+    </footer>
+
+    <!-- ===================================================
+         E. CONTROL SCRIPT LOGIC (ROUTING & ACCORDION)
+    ==================================================== -->
+    <script>
+        /**
+         * 1. Multi-Page SPA Navigation System Router Loop
+         */
+        function navigateVirtualPage(targetPageId) {
+            // Fetch all virtual page instances
+            const viewPanels = document.querySelectorAll('.page-view');
+            viewPanels.forEach(view => {
+                view.classList.remove('active-view');
+            });
+
+            // Activate specific selected layout block
+            const selectedView = document.getElementById(targetPageId);
+            if (selectedView) {
+                selectedView.classList.add('active-view');
+            }
+
+            // Sync structural menu button highlight metrics
+            const headerLinks = document.querySelectorAll('.nav-links button');
+            headerLinks.forEach(link => {
+                link.classList.remove('active-page');
+            });
+
+            const linkAnchor = document.getElementById('nav-' + targetPageId);
+            if (linkAnchor) {
+                linkAnchor.classList.add('active-page');
+            }
+
+            // Push display focus posture smoothly back up to surface view coordinates
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /**
+         * 2. Accordion Dropdown Trigger Mechanics
+         */
+        function toggleAccordionElement(htmlElement) {
+            const openStateActive = htmlElement.classList.contains('faq-active');
+            const allItems = document.querySelectorAll('.faq-accordion-item');
+            
+            // Clean active assignments off structural siblings
+            allItems.forEach(item => item.classList.remove('faq-active'));
+            
+            // Assign class indicator safely if element was previously dormant
+            if (!openStateActive) {
+                htmlElement.classList.add('faq-active');
+            }
+        }
+
+        /**
+         * 3. Interactive Lightbox Visual Inspection Popups
+         */
+        function activateLightboxView(cardScope) {
+            const rawImageSource = cardScope.querySelector('img').getAttribute('src');
+            const overlayWindow = document.getElementById('lightboxModal');
+            const modalImgElement = document.getElementById('lightboxTargetImg');
+
+            modalImgElement.setAttribute('src', rawImageSource);
+            overlayWindow.style.display = 'flex';
+        }
+
+        function dismissLightboxView() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
